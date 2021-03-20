@@ -6,14 +6,18 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  },
+  },  
   {
-    path: 'categorias',
-    loadChildren: () => import('./pagina/categorias/categorias.module').then( m => m.CategoriasPageModule)
+    path: 'primeira',
+    loadChildren: () => import('./inicio/primeira/primeira.module').then( m => m.PrimeiraPageModule)
   },
   {
     path: 'home',
     loadChildren: () => import('./pagina/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pagina/categoria/categoria.module').then( m => m.CategoriaPageModule)
   }
 ];
 

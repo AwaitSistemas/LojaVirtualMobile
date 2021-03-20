@@ -1,14 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title> Home</ion-title>
-  </ion-toolbar>
-</ion-header>
 
+<ion-img src="assets/img/slide-2.png"></ion-img>
 <ion-content>
+  <form>
 
-  <p>Aqui é o conteudo de HOME</p>
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input [(ngModel)]="creds.email" name="email"   type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input [(ngModel)]="creds.senha" name="senha"   type="password"></ion-input>
+    </ion-item>
+    <ion-button (click)="login()" expand="block">Acessar</ion-button>
+    <ion-button expand="block" fill="outline">Registrar</ion-button>
+
+  </form>
 
 </ion-content>
