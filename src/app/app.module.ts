@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CategoriaService } from 'src/service/domain/categoria.service';
 import { AuthService } from 'src/service/auth.service';
+import { StorageService } from 'src/service/storage.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { AuthService } from 'src/service/auth.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CategoriaService,
-    AuthService
+    AuthService,
+    StorageService,
   ],
   
   bootstrap: [AppComponent]
