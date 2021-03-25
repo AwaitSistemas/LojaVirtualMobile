@@ -1,3 +1,5 @@
+import { StorageService } from './../service/storage.service';
+import { ClienteService } from './../service/domain/cliente.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -30,6 +32,7 @@ import { StorageService } from 'src/service/storage.service';
     CategoriaService,
     AuthService,
     StorageService,
+    ClienteService
   ],
   
   bootstrap: [AppComponent]
