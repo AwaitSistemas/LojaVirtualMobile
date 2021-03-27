@@ -1,0 +1,32 @@
+
+
+
+/* PADRÃO NO CENTRO*/
+    
+ion-header {
+        
+}
+
+ion-avatar {
+    //--border-radius:0;
+    margin:30px;
+
+}
+
+ion-content h2, p{
+    
+    margin:20px ;
+}
+/*
+ion-content h2{
+    --ion-text-color:rgb(229, 225, 235);
+    color:rgb(6, 179, 121);
+    margin-left:25% ;
+}
+
+ion-content p{
+    --ion-text-color:rgb(229, 225, 235);
+    color:rgb(6, 179, 121);
+    margin-left:25% ;
+}
+*/

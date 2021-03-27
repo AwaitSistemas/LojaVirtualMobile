@@ -43,7 +43,7 @@ export class ProfilePage implements OnInit {
     this.clienteService.getImageFromBucket(this.cliente.id)
       .subscribe(response => {
        this.cliente.imageUrl = 
-         `${API_CONFIG.backetBaseUrl}/cp${this.cliente.id}`;
+         `${API_CONFIG.backetBaseUrl}/cp${this.cliente.id}.jpg`;
        },
        error => {
        });
