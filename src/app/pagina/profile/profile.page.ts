@@ -33,9 +33,16 @@ export class ProfilePage implements OnInit {
         this.getImageIfExists();
       }, 
       error => {
+        if(error.status == 403){
+          this.nav.navigateForward('/home');
+        }
 
       });
     }
+    else{
+      this.nav.navigateForward('/home');
+    }
+
   }
 
 
@@ -46,8 +53,11 @@ export class ProfilePage implements OnInit {
          `${API_CONFIG.backetBaseUrl}/cp${this.cliente.id}.jpg`;
        },
        error => {
+       
+
        });
    }
+   
  
 
 }
