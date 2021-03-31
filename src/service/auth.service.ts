@@ -31,6 +31,19 @@ export class AuthService{
 
         }))
       }
+    refreshToken() {
+        return this.http.post(
+            `${API_CONFIG.baseURL}/auth/refresh_token`,
+            {}, 
+            { observe: 'response',  responseType: 'text' }
+        ).pipe(tap( res => {
+
+          console.log(res)
+          
+          const token = res.headers.get('Authorization');
+
+        }))
+      }
 
 
       succesFulllogin(authorizationValue: string){

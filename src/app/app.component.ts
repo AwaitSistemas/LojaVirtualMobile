@@ -25,6 +25,12 @@ export class AppComponent implements OnInit {
       title: 'Categorias',
       url: '/categorias',
       icon: 'mail'
+    
+    },
+    {
+      title: 'Sair',
+      url: '/logout',
+      icon: 'mail'
     }
   ];
 
@@ -39,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+      this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
@@ -50,5 +56,6 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  
   }
 }

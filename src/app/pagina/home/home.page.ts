@@ -41,6 +41,17 @@ ionViewDidLeave() {
   this.menu.enable(true);
 }
 
+ionViewDidEnter() {
+  this.auth.refreshToken()
+  .subscribe(response => { 
+  this.auth.succesFulllogin(response.headers.get("Authorization"));
+  this.nav.navigateForward('/categorias');
+  },
+  error => {console.log(error)}
+  )
+ }
+ 
+
   ngOnInit() {
   }
 
