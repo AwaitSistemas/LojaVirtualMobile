@@ -31,24 +31,18 @@ export class AppComponent implements OnInit {
     {
       title: 'Profile',
       url: '/profile',
-      icon: 'mail'
+      icon: 'person'
     },
     {
       title: 'Categorias',
       url: '/categorias',
-      icon: 'mail'
+      icon: 'newspaper'
     
     }
-    ,
-    {
-      title: 'Sair',
-      url: '/categorias',
-      icon: 'md-log-out'
     
-    }
   ];
 
-  public labels = [{title:'Family'},{title: 'Friends'},{title: 'sair', icon:'md-log-out'}];
+  public labels = [{title: 'sair'}];
 
 
   initializeApp() {
