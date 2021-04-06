@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+    <ion-item>
+      <ion-label>Nome*</ion-label>
+      <ion-input name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>E-mail*</ion-label>
+      <ion-input name="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Tipo de Cliente</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Física</ion-label>
+          <ion-radio slot="start" value="fisica"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Jurídica</ion-label>
+          <ion-radio slot="start" value="juridica"></ion-radio>
+        </ion-item>
+      
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Nome*</ion-label>
+      <ion-input name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CPF ou CNPJ</ion-label>
+      <ion-input name="cpfOuCnpj" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha*</ion-label>
+      <ion-input name="senha" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Logradouro</ion-label>
+      <ion-input name="logradouro" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Número*</ion-label>
+      <ion-input name="numero" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Complemento*</ion-label>
+      <ion-input name="complemento" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Bairro</ion-label>
+      <ion-input name="bairro" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CEP*</ion-label>
+      <ion-input name="cep" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone 1*</ion-label>
+      <ion-input name="telefone1" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone 2</ion-label>
+      <ion-input name="telefone2" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone 3</ion-label>
+      <ion-input name="telefone3" type="text"></ion-input>
+    </ion-item>
+
+<ion-list>
+    <ion-item>
+      <ion-label>Estado*</ion-label>
+      <ion-select  (ionChange)="updateCidades()" placeholder="Selecione uma opção">
+        <ion-select-option value="1">Minas Gerais</ion-select-option>
+        <ion-select-option value="2">São Paulo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+<ion-list>
+    <ion-item>
+      <ion-label>Cidade*</ion-label>
+      <ion-select placeholder="Selecione uma opção">
+        <ion-select-option value="1">Uberlandia</ion-select-option>
+        <ion-select-option value="2">Campinas</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+     <ion-button expand="block" fill="solid" slot="start" block type="submit"> Criar conta </ion-button>
+
+  </form>
+
+</ion-content>

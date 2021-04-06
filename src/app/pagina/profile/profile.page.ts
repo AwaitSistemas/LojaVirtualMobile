@@ -23,6 +23,11 @@ export class ProfilePage implements OnInit {
     public clienteService: ClienteService
   ) { }
 
+  ionViewWillEnter() {
+    this.menu.enable(true);
+  }
+
+
   ngOnInit() {
     let localUser = this.storage.getLocalUser();
     

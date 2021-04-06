@@ -37,9 +37,9 @@ export class HomePage implements OnInit {
    this.menu.enable(false);
   }
 
-ionViewDidLeave() {
-  this.menu.enable(true);
-}
+// ionViewDidLeave() {
+//   this.menu.enable(true);
+// }
 
 ionViewDidEnter() {
   this.auth.refreshToken()

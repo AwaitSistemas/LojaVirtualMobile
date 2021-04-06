@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pagina/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./pagina/signup/signup.module').then( m => m.SignupPageModule)
   }
 ];
 
