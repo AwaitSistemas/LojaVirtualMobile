@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
     public auth: AuthService,
     public nav: NavController
 
-
   ) {
     this.initializeApp();
   }
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit {
     }
     
   ];
-
   public labels = [{title: 'sair'}];
 
 
