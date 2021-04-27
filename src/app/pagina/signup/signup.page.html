@@ -93,30 +93,30 @@
       <ion-input formControlName="telefone3" type="text"></ion-input>
     </ion-item>
 
-<ion-list>
+
     <ion-item>
       <ion-label>Estado*</ion-label>
       <ion-select formControlName="estadoId"  (ionChange)="updateCidades()" placeholder="Selecione uma opção">
-        <ion-select-option value="1">Minas Gerais</ion-select-option>
-        <ion-select-option value="2">São Paulo</ion-select-option>
+        <ion-select-option *ngFor="let estado of estados; first as f" [value]="estado.id" [selected]="f"> 
+          {{estado.nome}}
+        </ion-select-option>
       </ion-select>
     </ion-item>
 
-  </ion-list>
 
-<ion-list>
     <ion-item>
       <ion-label>Cidade*</ion-label>
       <ion-select formControlName="cidadeId" placeholder="Selecione uma opção">
-        <ion-select-option value="1">Uberlandia</ion-select-option>
-        <ion-select-option value="2">Campinas</ion-select-option>
+        <ion-select-option *ngFor="let cidade of cidades" [value]="cidade.id">
+          {{cidade.nome}}
+        </ion-select-option>
       </ion-select>
+
+      
     </ion-item>
 
-  </ion-list>
-
+  
      <ion-button expand="block" fill="solid" slot="start" block type="submit"> Criar conta </ion-button>
 
   </form>
-
 </ion-content>

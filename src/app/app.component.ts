@@ -37,8 +37,7 @@ export class AppComponent implements OnInit {
       url: '/categorias',
       icon: 'newspaper'
     
-    }
-    
+    }    
   ];
   public labels = [{title: 'sair'}];
 
