@@ -17,11 +17,18 @@
       <ion-label>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="form.get('nome').dirty && form.get('nome').errors" 	margin-left>
+      Valor inválido
+    </p> 
+
 
     <ion-item>
       <ion-label stacked>E-mail*</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
+    <p class="danger"  *ngIf="form.get('email').dirty && form.get('email').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
     <ion-list>
       <ion-radio-group formControlName="tipo" value="biff">
@@ -32,26 +39,35 @@
     
         <ion-item>
           <ion-label>Física</ion-label>
-          <ion-radio slot="start" value="fisica"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
     
         <ion-item>
           <ion-label>Jurídica</ion-label>
-          <ion-radio slot="start" value="juridica"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       
       </ion-radio-group>
     </ion-list>
+    <p class="danger"  *ngIf="form.get('tipo').dirty && form.get('tipo').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
      <ion-item>
       <ion-label stacked>CPF ou CNPJ</ion-label>
       <ion-input formControlName="cpfOuCnpj" type="text"></ion-input>
     </ion-item>
+    <p class="danger"  *ngIf="form.get('cpfOuCnpj').dirty && form.get('cpfOuCnpj').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
       <ion-input formControlName="senha" type="text"></ion-input>
     </ion-item>
+    <p class="danger"  *ngIf="form.get('senha').dirty && form.get('senha').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
     <ion-item>
       <ion-label stacked>Logradouro</ion-label>
@@ -77,11 +93,17 @@
       <ion-label stacked>CEP*</ion-label>
       <ion-input formControlName="cep" type="text"></ion-input>
     </ion-item>
+    <p class="danger"  *ngIf="form.get('cep').dirty && form.get('cep').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
     <ion-item>
       <ion-label stacked>Telefone 1*</ion-label>
       <ion-input formControlName="telefone1" type="text"></ion-input>
     </ion-item>
+    <p class="danger"  *ngIf="form.get('telefone1').dirty && form.get('telefone1').errors" 	margin-left>
+      Valor inválido
+    </p> 
 
     <ion-item>
       <ion-label stacked>Telefone 2</ion-label>
@@ -111,12 +133,10 @@
           {{cidade.nome}}
         </ion-select-option>
       </ion-select>
-
-      
     </ion-item>
 
   
-     <ion-button expand="block" fill="solid" slot="start" block type="submit"> Criar conta </ion-button>
+     <ion-button expand="block" fill="solid" [disabled]="form.invalid" slot="start" block type="submit" > Criar conta </ion-button>
 
   </form>
 </ion-content>

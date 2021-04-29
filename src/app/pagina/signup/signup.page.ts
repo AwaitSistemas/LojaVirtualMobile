@@ -24,7 +24,7 @@ export class SignupPage implements OnInit {
   ngOnInit() {
 
         this.form = this.formBuilder.group ({
-          nome: new FormControl('', [Validators.minLength(20), Validators.required, Validators.minLength(5)]),
+          nome: new FormControl('ABMAEL DE LIMA FERREIRA', [Validators.minLength(20), Validators.required, Validators.minLength(5)]),
           email: new FormControl('abmael100@gmail.com',[Validators.required, Validators.email]),
           tipo: new FormControl('1',[Validators.required]),
           cpfOuCnpj: new FormControl('01203855389',[Validators.required, Validators.minLength(11), Validators.maxLength(14)]),
@@ -35,10 +35,10 @@ export class SignupPage implements OnInit {
           bairro: new FormControl('Copacabana',[]),
           cep: new FormControl('78120460',[Validators.required]),
           telefone1: new FormControl('65992250724',[Validators.required]),
-          telefone2:new FormControl('',[Validators.required]),
-          telefone3:new FormControl('',[Validators.required]),
-          estadoId: new FormControl([Validators.required]),
-          cidadeId:new FormControl([Validators.required])
+          telefone2:new FormControl(''),
+          telefone3:new FormControl(''),
+          estadoId: new FormControl( null,[Validators.required]),
+          cidadeId:new FormControl(null,[Validators.required])
       });
 
       this.estadoService.findAll()
@@ -50,7 +50,6 @@ export class SignupPage implements OnInit {
             }
       },
     error => { });
-
   }
 
   updateCidades() {
