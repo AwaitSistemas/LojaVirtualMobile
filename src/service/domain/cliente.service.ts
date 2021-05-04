@@ -13,6 +13,17 @@ export class ClienteService{
         public storage: StorageService
         ){ }
 
+        insert(obj: ClienteDTO){
+            return this.http.post(
+                `${API_CONFIG.baseURL}/clientes`, 
+                obj,
+                {
+                    observe:'response',
+                    responseType: 'text'
+                }
+            )
+        }
+
     findByEmail(email: string) : Observable<ClienteDTO> {
         
         //let token = this.storage.getLocalUser().token;
