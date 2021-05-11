@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-menu-toggle id="menuId"></ion-menu-toggle>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content padding>
+<ion-list>
+  <button ion-item class="produto" *ngFor="let item of itens">
+    <ion-thumbnail item-start>
+      <img [src]="item.imageUrl || 'assets/img/prod.jpg'">
+    </ion-thumbnail>
+    <h2>{{item.nome}}</h2>
+     <p>{{item.preco||currency}}</p> <!--:"BRL":true:"1.2" -->
+
+  </button>
+</ion-list>
+</ion-content>

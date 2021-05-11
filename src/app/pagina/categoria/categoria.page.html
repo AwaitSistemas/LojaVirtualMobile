@@ -10,7 +10,7 @@
 
 <ion-content padding>
 
-<ion-list *ngFor="let item of itens">
+  <ion-list *ngFor="let item of itens" expand="block" fill="outline"   [routerLink]="['/produto']"routerdirection="forward" > <!--[routerLink]="['/signup']"  (click)="showProdutos()"--> 
 
   <ion-item >
     <ion-thumbnail slot="end">

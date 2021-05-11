@@ -2,7 +2,7 @@ import { CategoriaService } from './../../../service/domain/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaDTO } from 'src/models/categoria.dto';
 import { API_CONFIG } from 'src/config/api.config';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categoria',
@@ -16,6 +16,7 @@ export class CategoriaPage implements OnInit {
 
   constructor(
     public categoriaService: CategoriaService,
+    public navCtrl: NavController,
     public menu: MenuController  ) { }
 
     ionViewWillEnter() {
@@ -36,4 +37,10 @@ export class CategoriaPage implements OnInit {
           console.log( error);
         });
   }
+
+  showProdutos(){
+    // this.navCtrl.push('ProdutosPage');
+    this.navCtrl.navigateForward('/produtos');
+  }
+
 }
