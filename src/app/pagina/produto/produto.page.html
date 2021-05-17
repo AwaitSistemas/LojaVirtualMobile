@@ -10,18 +10,29 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
+  <ion-list  *ngFor="let item of items">
+    <ion-item>
+      {{item.nome}}
+        <ion-avatar slot="start">
+          <ion-img [src]="item.imageUrl || 'assets/img/prod.jpg'"></ion-img>
+        </ion-avatar>
+        <ion-badge color="primary" slot="end">{{item.preco|currency:'BRL':true:'1.2-2'}}</ion-badge>
+      </ion-item>
+  </ion-list>
+</ion-content>
 
 
 
-<ion-content padding>
+<!-- <ion-content padding>
 <ion-list>
-  <button ion-item class="produto" *ngFor="let item of itens">
+  <button ion-item class="produto" *ngFor="let item of items">
     <ion-thumbnail item-start>
       <img [src]="item.imageUrl || 'assets/img/prod.jpg'">
     </ion-thumbnail>
     <h2>{{item.nome}}</h2>
-     <p>{{item.preco||currency}}</p> <!--:"BRL":true:"1.2" -->
+     <p>{{item.preco||currency :"BRL":true:"1.2"}}</p> 
 
   </button>
 </ion-list>
-</ion-content>
+</ion-content> -->

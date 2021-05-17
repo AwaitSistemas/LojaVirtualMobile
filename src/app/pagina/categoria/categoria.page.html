@@ -10,7 +10,8 @@
 
 <ion-content padding>
 
-  <ion-list *ngFor="let item of itens" expand="block" fill="outline"   [routerLink]="['/produto']"routerdirection="forward" > <!--[routerLink]="['/signup']"  (click)="showProdutos()"--> 
+    <!-- this.navCtrl.navigateForward('/produtos'); -->
+  <ion-list *ngFor="let item of itens" expand="block" fill="outline"  (click)="showProdutos(item.id)" > <!--[routerLink]="['/signup']" routerdirection="forward"  --> 
 
   <ion-item >
     <ion-thumbnail slot="end">

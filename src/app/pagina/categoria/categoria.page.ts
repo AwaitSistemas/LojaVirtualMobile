@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaDTO } from 'src/models/categoria.dto';
 import { API_CONFIG } from 'src/config/api.config';
 import { MenuController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria',
@@ -16,21 +17,23 @@ export class CategoriaPage implements OnInit {
 
   constructor(
     public categoriaService: CategoriaService,
-    public navCtrl: NavController,
+    public router: Router,
     public menu: MenuController  ) { }
 
     ionViewWillEnter() {
       this.menu.enable(true);
     }
 
-
   ionViewDidLoad(){
   }
+
   ngOnInit() {
 
     this.categoriaService.findAll()
         .subscribe(response => {
+
           this.itens = response;
+          
           console.log(response);
         },
         error => {
@@ -38,9 +41,10 @@ export class CategoriaPage implements OnInit {
         });
   }
 
-  showProdutos(){
-    // this.navCtrl.push('ProdutosPage');
-    this.navCtrl.navigateForward('/produtos');
+  showProdutos(categoria_id: string){
+    
+    let data = JSON.stringify(categoria_id);
+    this.router.navigate(['produtos', {data}]);
   }
-
+  
 }

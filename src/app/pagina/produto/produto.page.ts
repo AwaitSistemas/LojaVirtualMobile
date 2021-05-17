@@ -1,5 +1,8 @@
+import { API_CONFIG } from './../../../config/api.config';
+import { ProdutoService } from './../../../service/domain/produto.service';
 import { ProdutoDTO } from './../../../models/produto.dto';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -8,26 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoPage implements OnInit {
 
-  itens: ProdutoDTO[];
+  items: ProdutoDTO[];
 
-  constructor() { }
+  constructor(
+
+    public activatedRouter: ActivatedRoute,
+    public produtoService: ProdutoService
+  ) { 
+
+  }
 
   ngOnInit() {
+    let categoria_id = this.activatedRouter.snapshot.paramMap.get('data');
+    
+    this.produtoService.findByCategoria(categoria_id)    
+    .subscribe(response => {
+      this.items = response['content'];
+      this.loadImageUrls();
+    },
+    
+    error =>{
 
-    this.itens = [
-      {
-          id:"1",
-          nome:"Mouse",
-          preco:80.90
-      },
-      {
-        id:"2",
-          nome:"Teclado",
-          preco:100.90
-  
-      }
-    ]
-  };
+      });
   }
+
+  loadImageUrls() {
+    for(var i = 0; i< this.items.length; i++){
+      let item = this.items[i];
+    this.produtoService.getSmallImageFromBucket(item.id)
+      .subscribe(response =>{
+        item.imageUrl = `${API_CONFIG.backetBaseUrl}/prod${item.id}-small.jpg`;
+      },
+      error =>{});
+    }
+
+  }
+}
 
 
