@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-menu-toggle id="menuId"></ion-menu-toggle>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-card>
+    <img [src]="item?.imageUrl || 'assets/img/prod.jpg'">
+    <ion-card-header>
+      <ion-card-subtitle>Produto</ion-card-subtitle>
+      <ion-card-title>{{item?.nome}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{item?.preco | currency:'BRL':true:'1.2-2'}}
+      
+      <ion-button 
+         expand="block" 
+        fill="solid" 
+       slot="start" 
+       block type="submit">
+                   Adicionar ao Carrinho
+       </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

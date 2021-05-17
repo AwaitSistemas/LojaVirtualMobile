@@ -2,7 +2,7 @@ import { API_CONFIG } from './../../../config/api.config';
 import { ProdutoService } from './../../../service/domain/produto.service';
 import { ProdutoDTO } from './../../../models/produto.dto';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -16,7 +16,8 @@ export class ProdutoPage implements OnInit {
   constructor(
 
     public activatedRouter: ActivatedRoute,
-    public produtoService: ProdutoService
+    public produtoService: ProdutoService,
+    private router: Router
   ) { 
 
   }
@@ -45,6 +46,10 @@ export class ProdutoPage implements OnInit {
       error =>{});
     }
 
+  }
+
+  showDetail(){
+    this.router.navigate(['produto-detail']);
   }
 }
 

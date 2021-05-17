@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list  *ngFor="let item of items">
+  <ion-list  *ngFor="let item of items" (click)="showDetail()">
     <ion-item>
       {{item.nome}}
         <ion-avatar slot="start">
