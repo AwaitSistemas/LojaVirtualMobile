@@ -48,8 +48,9 @@ export class ProdutoPage implements OnInit {
 
   }
 
-  showDetail(){
-    this.router.navigate(['produto-detail']);
+  showDetail(produto_id: string){
+     let data = JSON.stringify(produto_id);
+    this.router.navigate(['produto-detail', {data}]);
   }
 }
 
