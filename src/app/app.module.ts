@@ -1,3 +1,4 @@
+import { CartService } from './../service/domain/cart-service';
 import { StorageService } from './../service/storage.service';
 import { ClienteService } from './../service/domain/cliente.service';
 import { NgModule } from '@angular/core';
@@ -37,7 +38,8 @@ import { ProdutoService } from 'src/service/domain/produto.service';
     AuthService,
     StorageService,
     ClienteService,
-    ProdutoService
+    ProdutoService,
+    CartService
   ],
   
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoService } from 'src/service/domain/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdutoDTO } from 'src/models/produto.dto';
 import { API_CONFIG } from 'src/config/api.config';
+import { CartService } from 'src/service/domain/cart-service';
 
 @Component({
   selector: 'app-produto-detail',
@@ -15,7 +16,10 @@ export class ProdutoDetailPage implements OnInit {
 
   constructor(
     public produtoService: ProdutoService,
-    public activedRouter: ActivatedRoute) { }
+              private activedRouter: ActivatedRoute,
+              public cartService: CartService,
+              private router: Router
+) { }
 
   ngOnInit() {
     let id = this.activedRouter.snapshot.paramMap.get('data');
@@ -36,5 +40,11 @@ export class ProdutoDetailPage implements OnInit {
         this.item.imageUrl = `${API_CONFIG.backetBaseUrl}/prod${this.item.id}.jpg`;
       }, error  =>{});
 }
+
+addToCart(produto: ProdutoDTO){
+  this.cartService.addProduto(produto);
+  this.router.navigate(['cart']);
+}
+
 
 }
