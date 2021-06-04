@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { CredenciaisDTO } from "src/models/credenciais.dto";
 import { LocalUser } from "src/models/local_user";
 import { JwtHelperService  } from '@auth0/angular-jwt';
+import { CartService } from './domain/cart-service';
 
 @Injectable()
 export class AuthService{
@@ -14,7 +15,8 @@ export class AuthService{
 
     constructor(
       private http: HttpClient,
-      public storage: StorageService){
+      public storage: StorageService,
+      public cartService: CartService){
         
     }
 
@@ -53,6 +55,7 @@ export class AuthService{
           email: this.jwtHelperService.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
+        this.cartService.createOrClearCart();
  }
 
  logout(){

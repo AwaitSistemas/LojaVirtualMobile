@@ -39,12 +39,10 @@ export class ProdutoDetailPage implements OnInit {
       .subscribe(response =>{
         this.item.imageUrl = `${API_CONFIG.backetBaseUrl}/prod${this.item.id}.jpg`;
       }, error  =>{});
-}
+  }
 
-addToCart(produto: ProdutoDTO){
-  this.cartService.addProduto(produto);
-  this.router.navigate(['cart']);
-}
-
-
+  addToCart(produto: ProdutoDTO){
+    this.cartService.addProduto(produto);
+    this.router.navigate(['cart']);
+  }
 }
