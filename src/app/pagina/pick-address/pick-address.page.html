@@ -1,0 +1,24 @@
+<ion-header>
+  
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Fechamento de Pedidos</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content >
+   
+<ion-list  expand="block" fill="outline" > 
+  		<ion-list-header>
+    			<h1> Selecione um endereço</h1>
+  		</ion-list-header>
+
+  	<button fill="outline"  *ngFor="let item of items" >
+    		<h3>{{item.logradouro}},  {{item.numero}} </h3>
+    			{{item.complemento}},{{item.bairro}} 
+    			{{item.cidade.nome}},{{item.cidade.estado.nome}}
+  	</button>
+</ion-list>
+
+</ion-content>
