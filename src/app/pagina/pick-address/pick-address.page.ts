@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { EnderecoDTO } from 'src/models/endereco.dto';
+import { ClienteService } from 'src/service/domain/cliente.service';
+import { StorageService } from 'src/service/storage.service';
 
 @Component({
   selector: 'app-pick-address',
@@ -10,45 +13,32 @@ export class PickAddressPage implements OnInit {
 
   items: EnderecoDTO[];
 
-  constructor() { }
+  constructor(
+    public storage: StorageService,
+    public clienteService: ClienteService,
+    public nav: NavController
+
+  ) { }
 
   ngOnInit() {
 
-    this.items = [
-      {
-        id: "1",
-        logradouro: "Rua Joaquim de Figueiredo",
-        numero: "3",
-        complemento: "Quadra 1",
-        bairro: "Jardim Maringá 2",
-        cep: "78120460",
-        cidade: {
-          id: "1",
-          nome: "várzea Grande",
-          estado: {
-            id: "1",
-            nome: "Mato Grosso"
-          }
-        }
-      },
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+      this.clienteService.findByEmail(localUser.email)
+        .subscribe(response => {
+          this.items = response['enderecos']
 
-      {
-        id: "1",
-        logradouro: "Rua Joaquim de Figueiredo",
-        numero: "3",
-        complemento: "Quadra 1",
-        bairro: "Jardim Maringá 2",
-        cep: "78120460",
-        cidade: {
-          id: "1",
-          nome: "várzea Grande",
-          estado: {
-            id: "1",
-            nome: "Mato Grosso"
-          }
-        }
-      }
-    ]
+        },
+          error => {
+            if (error.status == 403) {
+              this.nav.navigateForward('/home');
+            }
+          });
+    }
+    else {
+      this.nav.navigateForward('/home');
+    }
+
 
   }
 

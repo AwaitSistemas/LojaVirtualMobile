@@ -7,37 +7,40 @@ import { Injectable } from "@angular/core";
 import { StorageService } from '../storage.service';
 
 @Injectable()
-export class ClienteService{
+export class ClienteService {
     constructor(
         public http: HttpClient,
         public storage: StorageService
-        ){ }
+    ) { }
 
-        insert(obj: ClienteDTO){
-            return this.http.post(
-                `${API_CONFIG.baseURL}/clientes`, 
-                obj,
-                {
-                    observe:'response',
-                    responseType: 'text'
-                }
-            )
-        }
+    insert(obj: ClienteDTO) {
+        return this.http.post(
+            `${API_CONFIG.baseURL}/clientes`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        )
+    }
 
-    findByEmail(email: string) : Observable<ClienteDTO> {
-        
+    findByEmail(email: string) {
+        // retirado : Observable<ClienteDTO> 
+
         //let token = this.storage.getLocalUser().token;
         //let autHeader = new HttpHeaders({'Authorization': 'Bearer '+ token});
 
-        return this.http.get<ClienteDTO>(
+
+        return this.http.get(
+            // RETIRADO <ClienteDTO>
             `${API_CONFIG.baseURL}/clientes/email?value=${email}`//, {'headers': autHeader}
         );
     }
 
-    getImageFromBucket(id: string) : Observable<any>{
+    getImageFromBucket(id: string): Observable<any> {
         let url = `${API_CONFIG.backetBaseUrl}/cp${id}.jpg`
-        return this.http.get(url, {responseType : 'blob'});
-      }
+        return this.http.get(url, { responseType: 'blob' });
+    }
 
 
 }

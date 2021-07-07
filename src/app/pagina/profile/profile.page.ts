@@ -1,3 +1,4 @@
+import { ClienteDTO } from './../../../models/cliente.dto';
 import { LocalUser } from './../../../models/local_user';
 import { ClienteService } from './../../../service/domain/cliente.service';
 import { StorageService } from './../../../service/storage.service';
@@ -17,8 +18,8 @@ export class ProfilePage implements OnInit {
   cliente: ClienteDTO
 
   constructor(
-    public nav: NavController, 
-    public menu:MenuController,
+    public nav: NavController,
+    public menu: MenuController,
     public storage: StorageService,
     public clienteService: ClienteService
   ) { }
@@ -30,22 +31,22 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     let localUser = this.storage.getLocalUser();
-    
-    if(localUser && localUser.email){
+
+    if (localUser && localUser.email) {
 
       this.clienteService.findByEmail(localUser.email)
-      .subscribe(response =>{
-        this.cliente = response;
-        this.getImageIfExists();
-      }, 
-      error => {
-        if(error.status == 403){
-          this.nav.navigateForward('/home');
-        }
+        .subscribe(response => {
+          this.cliente = response as ClienteDTO;
+          this.getImageIfExists();
+        },
+          error => {
+            if (error.status == 403) {
+              this.nav.navigateForward('/home');
+            }
 
-      });
+          });
     }
-    else{
+    else {
       this.nav.navigateForward('/home');
     }
 
@@ -55,15 +56,15 @@ export class ProfilePage implements OnInit {
   getImageIfExists() {
     this.clienteService.getImageFromBucket(this.cliente.id)
       .subscribe(response => {
-       this.cliente.imageUrl = 
-         `${API_CONFIG.backetBaseUrl}/cp${this.cliente.id}.jpg`;
-       },
-       error => {
-       
+        this.cliente.imageUrl =
+          `${API_CONFIG.backetBaseUrl}/cp${this.cliente.id}.jpg`;
+      },
+        error => {
 
-       });
-   }
-   
- 
+
+        });
+  }
+
+
 
 }
