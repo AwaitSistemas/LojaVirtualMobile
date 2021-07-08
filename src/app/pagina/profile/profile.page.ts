@@ -4,7 +4,6 @@ import { ClienteService } from './../../../service/domain/cliente.service';
 import { StorageService } from './../../../service/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
-import { ClienteDTO } from 'src/models/cliente.dto';
 import { API_CONFIG } from 'src/config/api.config';
 
 @Component({
