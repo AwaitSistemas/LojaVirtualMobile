@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { EnderecoDTO } from 'src/models/endereco.dto';
 import { ClienteService } from 'src/service/domain/cliente.service';
 import { StorageService } from 'src/service/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pick-address',
@@ -20,6 +21,7 @@ export class PickAddressPage implements OnInit {
     public storage: StorageService,
     public clienteService: ClienteService,
     public nav: NavController,
+    private router: Router,
     public cartService: CartService
 
   ) { }
@@ -61,7 +63,10 @@ export class PickAddressPage implements OnInit {
   }
 
   nextPage(item: EnderecoDTO) {
-    this.pedido.enderecoDeEntrega = { id: item.id };
+    let pedidoDTO = JSON.stringify(this.pedido)
+
+    this.router.navigate(['payment', { pedido: pedidoDTO }]);
+
     console.log(this.pedido);
   }
 

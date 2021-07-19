@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'pick-address',
     loadChildren: () => import('./pagina/pick-address/pick-address.module').then( m => m.PickAddressPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pagina/payment/payment.module').then( m => m.PaymentPageModule)
   }
 ];
 
