@@ -37,6 +37,11 @@ export class PaymentPage implements OnInit {
 
   nextPage() {
     this.pedido.pagamento = this.formGroup.value;
+    let pedidoD = JSON.stringify(this.pedido)
+
+    this.router.navigate(['order-confirmation', { pedido: pedidoD }]);
+    console.log(this.pedido);
+
     console.log(this.pedido);
   }
 

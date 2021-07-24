@@ -24,6 +24,13 @@ export class ClienteService {
         )
     }
 
+
+    findById(id: string) {
+        return this.http.get(
+            `${API_CONFIG.baseURL}/clientes/${id}`
+        );
+    }
+
     findByEmail(email: string) {
         // retirado : Observable<ClienteDTO> 
 

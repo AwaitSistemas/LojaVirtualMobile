@@ -5,7 +5,7 @@ import { NavController } from '@ionic/angular';
 import { EnderecoDTO } from 'src/models/endereco.dto';
 import { ClienteService } from 'src/service/domain/cliente.service';
 import { StorageService } from 'src/service/storage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pick-address',
@@ -18,17 +18,22 @@ export class PickAddressPage implements OnInit {
   pedido: PedidoDTO;
 
   constructor(
+    private activatedRouter: ActivatedRoute,
     public storage: StorageService,
     public clienteService: ClienteService,
     public nav: NavController,
     private router: Router,
     public cartService: CartService
 
-  ) { }
+  ) {
+    this.pedido = JSON.parse(this.activatedRouter
+      .snapshot.paramMap.get('pedido'));
+  }
 
   ngOnInit() {
 
     let localUser = this.storage.getLocalUser();
+
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
@@ -63,6 +68,7 @@ export class PickAddressPage implements OnInit {
   }
 
   nextPage(item: EnderecoDTO) {
+    this.pedido.enderecoDeEntrega = { id: item.id };
     let pedidoDTO = JSON.stringify(this.pedido)
 
     this.router.navigate(['payment', { pedido: pedidoDTO }]);
