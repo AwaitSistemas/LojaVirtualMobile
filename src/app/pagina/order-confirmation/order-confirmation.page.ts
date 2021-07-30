@@ -6,6 +6,7 @@ import { CartItem } from './../../../models/cart-item';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PedidoDTO } from './../../../models/pedido.dto';
 import { Component, OnInit } from '@angular/core';
+import { PedidoService } from 'src/service/domain/pedido.service';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -23,7 +24,8 @@ export class OrderConfirmationPage implements OnInit {
     private activatedRouter: ActivatedRoute,
     public cartService: CartService,
     public clienteService: ClienteService,
-    private router: Router
+    private router: Router,
+    public pedidoService: PedidoService
   ) {
     this.pedido = JSON.parse(this.activatedRouter
       .snapshot.paramMap.get('pedido'));
@@ -55,6 +57,26 @@ export class OrderConfirmationPage implements OnInit {
   total() {
     return this.cartService.total();
   }
+
+  back() {
+    this.router.navigate(['cart']);
+
+  }
+
+
+  checkout() {
+    this.pedidoService.insert(this.pedido)
+      .subscribe(response => {
+        this.cartService.createOrClearCart();
+        console.log(response.headers.get('location'));
+      },
+        error => {
+          if (error.status == 403) {
+            this.router.navigate(['home']);
+          }
+        });
+  }
+
 
 
 
