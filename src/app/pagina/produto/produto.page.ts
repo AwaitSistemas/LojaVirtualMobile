@@ -13,7 +13,6 @@ import { LoadingController } from '@ionic/angular';
 export class ProdutoPage implements OnInit {
 
   items: ProdutoDTO[];
-  loading: any;
 
   constructor(
 
@@ -28,18 +27,22 @@ export class ProdutoPage implements OnInit {
 
   ngOnInit() {
     let categoria_id = this.activatedRouter.snapshot.paramMap.get('data');
+
     this.presentLoading();
     this.produtoService.findByCategoria(categoria_id)
       .subscribe(response => {
+
         this.items = response['content'];
-        this.hideLoader();
         this.loadImageUrls();
+        this.dismiss();
       },
 
         error => {
 
         });
   }
+
+
 
   loadImageUrls() {
     for (var i = 0; i < this.items.length; i++) {
@@ -50,7 +53,6 @@ export class ProdutoPage implements OnInit {
         },
           error => { });
     }
-
   }
 
   showDetail(produto_id: string) {
@@ -59,24 +61,19 @@ export class ProdutoPage implements OnInit {
   }
 
   async presentLoading() {
-    this.loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Aguarde...',
-      spinner: 'lines'
-    }).then((res) => {
-      res.present();
-    })
-  }
-  hideLoader() {
-
-    this.loadingController.dismiss().then((res) => {
-      console.log('Loading dismissed!', res);
-    }).catch((error) => {
-      console.log('error', error);
+      message: 'Por favor aguarde...'
     });
-
+    await loading.present();
   }
 
+  dismiss() {
+
+    setTimeout(() => {
+      this.loadingController.dismiss();
+    }, 1000);
+  }
 
 }
 
