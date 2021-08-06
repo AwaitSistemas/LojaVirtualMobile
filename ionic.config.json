@@ -1,5 +1,7 @@
 {
   "name": "LojaVirtual",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
