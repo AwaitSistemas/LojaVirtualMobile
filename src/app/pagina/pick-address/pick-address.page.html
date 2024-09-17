@@ -1,0 +1,23 @@
+<ion-header>
+
+	<ion-toolbar color="primary">
+		<ion-menu-button slot="start"></ion-menu-button>
+		<ion-title>Fechamento de Pedidos</ion-title>
+	</ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+	<ion-card *ngFor="let item of items" (click)="nextPage(item)">
+		<ion-card-header>
+			<ion-card-subtitle>Endereço</ion-card-subtitle>
+			<ion-card-title>{{item.cidade.nome}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			{{item.complemento}}, {{item.bairro}}
+			{{item.cidade.nome}}, {{item.cidade.estado.nome}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>
